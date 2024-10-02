@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemical Supplies Table</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div id="toast" class="toast hidden">
+        <span id="toastMessage">Message</span>
+    </div>
+
+    <div class="container">
+        <div class="title-box">
+            <h2>Chemical Supplies</h2>
+            <div class="icon-bar">
+                <i class="fa-solid fa-circle-plus" style="color: rgb(29, 238, 14)" onclick="openModal()"></i>
+                <i class="fa-solid fa-arrow-up" id="arrowUp" onclick="moveRowUp()"></i>
+                <i class="fa-solid fa-arrow-down" id="arrowDown" onclick="moveRowDown()"></i>
+                <i class="fa-regular fa-pen-to-square" id="editIcon" onclick="openEditModal()"></i>
+                <i class="fa-solid fa-trash" style="color: rgb(239, 27, 27)" onclick="deleteRows()" id="deleteIcon"></i>
+                <i class="fa-regular fa-floppy-disk" style="color:blue" onclick="saveData()"></i>
+                <i class="fa-solid fa-rotate-right" style="color: rgb(40, 212, 250)" onclick="loadTable()"></i>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="chemicalTable">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th onclick="sortTable(2)">Chemical Name</th>
+                        <th onclick="sortTable(3)">Vendor</th>
+                        <th onclick="sortTable(4)">Density</th>
+                        <th onclick="sortTable(5)">Viscosity</th>
+                        <th onclick="sortTable(6)">Packaging</th>
+                        <th onclick="sortTable(7)">Pack Size</th>
+                        <th onclick="sortTable(8)">Unit</th>
+                        <th onclick="sortTable(9)">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="addModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 id="formHeader">Add Chemical Data</h2>
+                <form id="addChemicalForm">
+                    <input type="hidden" id="editIndex" name="editIndex">
+                    <div class="input-group">
+                        <div>
+                            <label for="chemicalName">Chemical Name</label>
+                            <input type="text" id="chemicalName" name="chemicalName" required>
+                        </div>
+                        <div>
+                            <label for="vendor">Vendor</label>
+                            <input type="text" id="vendor" name="vendor" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div>
+                            <label for="density">Density</label>
+                            <input type="text" id="density" name="density" onkeypress="allowOnlyNumbersAndDot(event)"
+                                required>
+                        </div>
+                        <div>
+                            <label for="viscosity">Viscosity</label>
+                            <input type="text" id="viscosity" name="viscosity" onkeypress="allowOnlyNumbersAndDot(event)"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div>
+                            <label for="packaging">Packaging</label>
+                            <input type="text" id="packaging" name="packaging" required>
+                        </div>
+                        <div>
+                            <label for="packSize">Pack Size</label>
+                            <input type="number" id="packSize" name="packSize" min="1" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div>
+                            <label for="unit">Unit</label>
+                            <input type="text" id="unit" name="unit" required>
+                        </div>
+                        <div>
+                            <label for="quantity">Quantity</label>
+                            <input type="text" id="quantity" name="quantity"
+                                onkeypress="allowOnlyNumbersAndDot(event)" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitButton">Add Chemical</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="index.js"></script>
+
+</body>
+
+</html>
