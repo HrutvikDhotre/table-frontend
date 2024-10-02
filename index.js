@@ -84,7 +84,7 @@ var savedChemicalData = JSON.parse(localStorage.getItem('chemicalData')) || [...
 function loadTable(data) {
     const tableBody = document.querySelector('#chemicalTable tbody')
     tableBody.innerHTML = ''
-    const dataToDisplay = data || savedChemicalData
+    const dataToDisplay = data || [...chemicalData]
 
     if (!data)
         savedChemicalData = [...chemicalData]
